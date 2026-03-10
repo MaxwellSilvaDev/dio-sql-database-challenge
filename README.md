@@ -2,7 +2,7 @@
 
 Projeto de modelagem e implementação de um banco de dados relacional para um sistema de e-commerce, com foco em entidades, relacionamentos, chaves primárias, chaves estrangeiras e consultas SQL.
 
-## 📊 Modelo do Banco
+## 📊 Modelo do Banco 
 
 ![Diagrama do Banco](ecommerce-database-diagram.png)
 
