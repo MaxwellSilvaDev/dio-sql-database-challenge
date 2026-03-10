@@ -34,6 +34,44 @@ O projeto inclui consultas SQL para análise e manipulação dos dados do sistem
 
 Essas consultas foram desenvolvidas para praticar comandos SQL fundamentais, como `SELECT`, `WHERE`, `ORDER BY`, `JOIN`, `SUM` e cálculos com colunas.
 
+## Exemplos de Consultas SQL
+
+### 1. Valor total de cada pedido
+
+```sql
+SELECT
+    ip.id_pedido,
+    SUM(ip.quantidade * ip.preco_unitario) AS valor_total_pedido
+FROM Item_Pedido ip
+GROUP BY ip.id_pedido
+ORDER BY valor_total_pedido DESC;
+```
+
+### 2. Total gasto por cliente
+
+```sql
+SELECT
+    c.nome AS cliente,
+    SUM(ip.quantidade * ip.preco_unitario) AS total_gasto
+FROM Cliente c
+INNER JOIN Pedido pe ON c.id = pe.id_cliente
+INNER JOIN Item_Pedido ip ON pe.id = ip.id_pedido
+GROUP BY c.nome
+ORDER BY total_gasto DESC;
+```
+
+### 3. Produtos que nunca foram vendidos
+
+```sql
+SELECT
+    p.id,
+    p.nome,
+    p.preco
+FROM Produto p
+LEFT JOIN Item_Pedido ip ON p.id = ip.id_produto
+WHERE ip.id_produto IS NULL;
+```
+
   ## Como Executar o Projeto
 
 1. Crie um banco de dados no SQL Server.
